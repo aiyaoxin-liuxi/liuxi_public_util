@@ -1,0 +1,8 @@
+Manifest-version: 1.0
+Specification-Title: @PROJECT@
+Specification-Version: @VERSION@
+Specification-Vendor: @VENDOR@
+Implementation-Title: @PROJECT@
+Implementation-Version: @VERSION@
+Implementation-Vendor: @VENDOR@
+

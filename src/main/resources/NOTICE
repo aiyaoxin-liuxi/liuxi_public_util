@@ -1,0 +1,178 @@
+  公共服务包
+public-util.jar
+1.0.4=======memcache==========
+org.pub.util.memcached.MemcacheManager.getInstance()
+org.pub.util.memcached.MemcacheManager.getInstance().add(String key, Object value)
+org.pub.util.memcached.MemcacheManager.getInstance().add(String key, Object value, int milliseconds)
+org.pub.util.memcached.MemcacheManager.getInstance().remove(String key)
+org.pub.util.memcached.MemcacheManager.getInstance().remove(String key, int milliseconds)
+org.pub.util.memcached.MemcacheManager.getInstance().update(String key, Object value, int milliseconds)
+org.pub.util.memcached.MemcacheManager.getInstance().update(String key, Object value)
+org.pub.util.memcached.MemcacheManager.getInstance().get(String key)
+
+1.0.3=======静态资源服务==========
+contract=/data/pdf/contract/
+card=/data/img/card/
+avatar=/data/img/avatar/
+userinfo=/data/img/userinfo/
+editor=/data/img/editor/
+articleEditor=/data/img/editor/article
+borrowEditor=/data/img/editor/borrow
+article=/data/img/article/
+goods=/data/img/goods/
+borrow=/data/img/borrow/
+pay=/data/img/pay/
+upfiles=/data/img/upfiles/
+default=/data/img/default.jpg
+excel=/data/excel/
+recharge=/data/recharge/
+register=/data/register/
+pub-util.properties--->image_server_url=http://localhost:8020/public_statics 
+
+1、添加文件：org.pub.util.file.HclientFileUtil.uploadFileMethod("register", file);//得到文件路劲如:/register/1612231757776064-FFD8FF/view.html
+2、获取文件：image_server_url+文件返回对应路径;//如: http://localhost:8020/public_statics/register/1612231757776064-FFD8FF/view.html
+
+1.0.2=======MAP排空==============
+1、org.pub.util.security.MapRemoveNullUtil.removeNullEntry(Map map);  //移除map中空key或者value空值 
+2、org.pub.util.security.MapRemoveNullUtil.removeNullKey(Map map);  //移除map的空key 
+3、org.pub.util.security.MapRemoveNullUtil.removeNullValue(Map map);  //移除map中的value空值 
+ 
+1.0.1=======序列==========
+1、获取唯一数字ID：org.pub.util.uuid.KeySn.getKey();
+2、获取唯一UUID：org.pub.util.uuid.Uuid.getInstance();
+
+=======签名==============
+1、org.pub.util.security.MessageSecurity.getMessageSecurity("userId",message,key);  //userId 可空  MD5
+2、org.pub.util.security.MessageSecurity.checkMessageSecurity("userId",message,securityMessage,key);//userId 可空  MD5
+3、org.pub.util.security.MessageSecurity.checkMessageSecurityIgnoreCase("userId",message,securityMessage,key);//userId 可空  MD5
+ 	
+4、org.pub.util.security.MessageSecurity.getMapMessageSecurity(Map<String, String> map,key);  //userId 可空  MD5
+5、org.pub.util.security.MessageSecurity.checkMapMessageSecurity(Map<String, String> map,key);//userId 可空     sign不可空    MD5
+6、org.pub.util.security.MessageSecurity.checkMapMessageSecurityIgnoreCase(Map<String, String> map,key);//userId 可空 sign不可空   MD5
+
+
+4.1、org.pub.util.security.MessageSecurity.getMapObjMessageSecurity(Map<String, Object> map,key);  //userId 可空  MD5
+5.1、org.pub.util.security.MessageSecurity.checkMapObjMessageSecurity(Map<String, Object> map,key);//userId 可空     sign不可空    MD5
+6.1、org.pub.util.security.MessageSecurity.checkMapObjMessageSecurityIgnoreCase(Map<String, Object> map,key);//userId 可空 sign不可空   MD5
+
+
+7、org.pub.util.security.RSAUtil.encrypt(url,message,enc);//enc 编码  可空
+8、org.pub.util.security.RSAUtil.decrypt(url,message,enc);//enc 编码  可空
+
+9、Map<String, Object> keyMap = org.pub.util.security.Keys.initKey(512);  //设置证书长度
+10、org.pub.util.securit；y.Keys.getPublicKey(keyMap);//获取公钥
+11、org.pub.util.security.Keys.getPrivateKey(keyMap);//获取私钥
+
+12、org.pub.util.json.JsonUtil.getJsonToMap(String,Object);//json 转 Map
+13、org.pub.util.json.JsonUtil.getMapToJson(Map<String,Object>);//Map 转 json
+
+===========HTTP/HTTPS请求==============enc 可空  默认 UTF-8
+1、org.pub.util.https.HttpClientUtil.httpGet(String req_url, String enc, String out_str)
+2、org.pub.util.https.HttpClientUtil.httpGet(String req_url, String enc, Map<String, Object> parameters)
+3、org.pub.util.https.HttpClientUtil.httpPost(String req_url, String enc, String out_str)
+4、org.pub.util.https.HttpClientUtil.httpPost(String req_url, String enc, Map<String, Object> parameters)
+5、org.pub.util.https.HttpClientUtil.httpsPost(String req_url, String enc, String out_str)
+6、org.pub.util.https.HttpClientUtil.httpsPost(String req_url, String enc, Map<String, Object> parameters)
+7、org.pub.util.https.HttpClientUtil.httpsGet(String req_url, String enc, String out_str)
+8、org.pub.util.https.HttpClientUtil.httpsGet(String req_url, String enc, Map<String, Object> parameters) 
+
+===========socketS请求==============
+org.pub.util.socket.SocketUtil.sendData(String server_ip, int server_port, String send_data)// 发送报文
+
+=======日期==================
+ 日期的工具集  org.pub.util.date.DateTools
+日期的转换 org.pub.util.date.DateConverter
+
+=======文件====================
+org.pub.util.file.FileOperate.saveFile(String fileDir,String fileName, String strContent) //将字符串保存成文件
+org.pub.util.file.FileOperate.saveFile(String filePath, String strContent)//将字符串保存成文件
+org.pub.util.file.FileOperate.saveFileEncoding(String filePath, String strContent, String encoding)//将字符串保存成文件 按指定的字符编码保存
+org.pub.util.file.FileOperate.saveFileAndBack(String filePath, String strContent)//将字符串保存成文件
+org.pub.util.file.FileOperate.saveFileForUrl(String destUrl, String filePath)//通过url，得到的流保存成文件
+org.pub.util.file.FileOperate.openFile(String filePath)//打开指定的文件
+org.pub.util.file.FileOperate.mkdir(String fileDir) //创建指定的文件目录
+org.pub.util.file.FileOperate.parseFileDir(String filePath) //解析出文件目录
+org.pub.util.file.FileOperate.parseFileName(String filePath)//解析出文件名
+org.pub.util.file.FileOperate.copyFiles(String fromPath, String toPath, String... filtrs)//拷贝文件或文件夹
+org.pub.util.file.FileOperate.copyFile(String fromPath, String toPath)//拷贝文件
+org.pub.util.file.FileOperate.copyDirectiory(String fromPath, String toPath, String... filtrs)//拷贝文件夹
+org.pub.util.file.FileOperate.isInFiltrs(String fileName, String... filtrs)//检验文件名是否在要过滤的文件规则中 全文件名:a.txt; 文件后缀名: *.class;文件夹: |.svn
+org.pub.util.file.FileOperate.string2File(String filePath, String res)//将字符串写入指定文件(当指定的父路径中文件夹不存在时，会最大限度去创建，以保证保存成功！)
+org.pub.util.file.FileOperate.string2File(String filePath, String res, String encoding)//将字符串写入指定文件(当指定的父路径中文件夹不存在时，会最大限度去创建，以保证保存成功！)
+org.pub.util.file.FileOperate.file2String(File file) //
+org.pub.util.file.FileOperate.file2String(String filePath) //
+org.pub.util.file.FileOperate.file2String(String filePath, String encoding) //
+org.pub.util.file.FileOperate.file2String(File file, String encoding)
+
+org.pub.util.file.FileUpload.upload(InputStream is, String fileDir, String fileName)//将输入流保存成指定的文件
+
+=========FTP====================
+org.pub.util.ftp.FtpUtil.uploadFile(String url, int port, String username, String password, String path, String filename, InputStream input) // 向FTP服务器上传文件
+org.pub.util.ftp.FtpUtil.downFile(String url, int port, String username, String password, String remotePath, String fileName, String localPath) //从FTP服务器下载文件
+
+=========格式化=================
+org.pub.util.format.Formatter.xmlFormat(String str)//格式xml内容字符串 去除非法字符 &,<,>,',\ 如遇到字符串等于“null”，默认将其转成空串
+org.pub.util.format.Formatter.xmlFormat(String str, boolean wipe) //
+org.pub.util.format.Formatter.dateFormat(String str, String strFormat) //日期字符串 格式化 要转成的格式为：yyyy-MM-dd
+org.pub.util.format.Formatter.dateFormat(String str, String strFormat, String dateFormat) //日期字符串 格式化
+org.pub.util.format.Formatter.dateFormat(Date date) //将日期格式化 要转成的格式为：yyyy-MM-dd
+org.pub.util.format.Formatter.dateFormat(Date date, String format) //将日期格式化
+org.pub.util.format.Formatter.datetimeFormat(String str, String strFormat) //日期时间字符串 格式化 要转成的格式为：yyyy-MM-dd HH:mm:ss
+org.pub.util.format.Formatter.datetimeFormat(String str, String strFormat, String dateFormat) //日期时间字符串 格式化
+org.pub.util.format.Formatter.datetimeFormat(Date date) //将日期时间格式化 要转成的格式为：yyyy-MM-dd HH:mm:ss
+org.pub.util.format.Formatter.datetimeFormat(Date date, String format) //将日期时间格式化
+org.pub.util.format.Formatter.doubleFormat(double num) //将数字字符串格式化
+org.pub.util.format.Formatter.doubleFormat(String numStr) //将数字字符串格式化
+org.pub.util.format.Formatter.doubleFormat(double num, String format) //将数字字符串格式化
+org.pub.util.format.Formatter.doubleFormat(String numStr, String format) //将数字字符串格式化
+
+==========资源文件==================
+org.pub.util.properties.PropertiesUtil.public static Properties loadProperties(name)//获取属性文件
+
+==========字符=====================
+org.pub.util.string.RegexMatcher.matches(String input, String regex, int group) //找出给定的字符串中匹配指定正则表达的所有子串，并返回字串中特定的捕获字符组。
+org.pub.util.string.RegexMatcher.matches(String input, String regex)//找出给定的字符串中匹配指定正则表达的所有子串，并返回字串中特定的捕获字符组。
+
+org.pub.util.string.StringChanges.toInitialUpperCase(String str) //首字母转成大写
+org.pub.util.string.StringChanges.toInitialLowerCase(String str) //首字母转成小写
+org.pub.util.string.StringChanges.toUpperCase(String str, int from, int length) //字符串转成大写
+org.pub.util.string.StringChanges.toLowerCase(String str, int from, int length) //字符串转成小写
+org.pub.util.string.StringChanges.toInvertCase(String str, int from, int length) //字符串大小写取反
+org.pub.util.string.StringChanges.re   placeAllStr(String curStr, Map<String, String> map) //将关键字替换为指定数据
+org.pub.util.string.StringChanges.replaceAllStr(String curStr, MapList<String, String> mapList) //用正则表达式列表替换为指定数据
+org.pub.util.string.StringChanges.getStrInFlags(String currStr, int index, String sFlag, String eFlag) //得到两标记之间代码
+org.pub.util.string.StringChanges.getStrInFlags(String currStr, int index, String sFlag, String eFlag, boolean addFlag) //得到两标记之间代码
+org.pub.util.string.StringChanges.supplyStrBefore(String currentStr,String finalStr, String sf) //在前补充字符 将当前字符串补充到和最终字符串位数相同的字符串
+org.pub.util.string.StringChanges.supplyStrBack(String currentStr,String finalStr, String sf) //在后补充字符 将当前字符串补充到和最终字符串位数相同的字符串
+org.pub.util.string.StringChanges.supplyStr(int bNum, int cNum, String currentStr,String finalStr, String sf, boolean beforeFlag) //补充字符 将当前字符串补充到和最终字符串位数相同的字符串
+org.pub.util.string.StringChanges.loopAddStr(String str, int count) //循环累加字符
+
+org.pub.util.string.StringParse.replaceFirst(String str, String key, String value) //替换第一个字符串
+org.pub.util.string.StringParse.getParseString(String str, String delim, int idx) //通过数据索引得到字符串数据方法
+org.pub.util.string.StringParse.parseString(String str, String delim) //通过给定的分隔符，来解析字符串
+org.pub.util.string.StringParse.parseString(String str, String delim, boolean returnDelims) //通过给定的分隔符，来解析字符串
+org.pub.util.string.StringParse.getBachStrForFlag(String src, String sFlag, String eFlag) //得到两标记这间的代码
+org.pub.util.string.StringParse.getBachStrForFlag(String src, String sFlag, String eFlag, boolean returnDelims) //得到两标记这间的代码
+org.pub.util.string.StringParse.valueOf(Object obj) //返回给定对象的字符串表达形式
+
+=========Unicode转换==============
+org.pub.util.unicoder.Unicoder.decoder(String uniStr) //将Unicode编码转成字符串
+org.pub.util.unicoder.Unicoder.encoder(String str) //将字符串转成unicode编码串
+org.pub.util.unicoder.Unicoder.encoder(String str, boolean all_flag, boolean upper_flag) //将字符串转成unicode编码串
+org.pub.util.unicoder.Unicoder.isBMPUnicoder(String cpStr) //验证输入的字符串是否为标准的unicode代码
+
+=========数据验证======================
+org.pub.util.validators.Validator.required(String str) //字符串是否为必须字段
+org.pub.util.validators.Validator.stringLength(String str, int min, int max) //字符串长度验证
+org.pub.util.validators.Validator.datetime(Date date, String min, String max) //日期时间验证
+org.pub.util.validators.Validator.datetime(Date date, String min, String max, String format) //日期时间验证
+org.pub.util.validators.Validator.date(Date date, String min, String max) //日期验证
+org.pub.util.validators.Validator.date(Date date, String min, String max, String format) //日期验证
+org.pub.util.validators.Validator.doubleIncl(double num, double min, double max) //double.包含验证
+org.pub.util.validators.Validator.doubleExcl(double num, double min, double max) //double.排除验证
+org.pub.util.validators.Validator.intIncl(int num, int min, int max) //int.包含验证
+org.pub.util.validators.Validator.intExcl(int num, int min, int max) //int.排除验证
+
+===========集合==============
+org.pub.util.MapList  同Map，List 使用
+
